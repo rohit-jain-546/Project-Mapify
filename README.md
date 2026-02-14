@@ -155,6 +155,9 @@ It can be deployed to platforms that support Nixpacks/Gunicorn (for example: Rai
 ![route-view](docs/images/route-view.png)
 
 Recommended folder: `docs/images/`
-## License
 
-Add your preferred license (for example, MIT) in a `LICENSE` file.
+
+## Author
+
+Rohit Jain  
+LinkedIn: https://www.linkedin.com/in/546-rohit-jain

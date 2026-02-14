@@ -150,19 +150,11 @@ It can be deployed to platforms that support Nixpacks/Gunicorn (for example: Rai
 
 ## Screenshots
 
-Add project screenshots in this section.
-
-Example markdown you can use:
-
-```md
 ![landing-page](docs/images/landing-page.png)
 
 ![route-view](docs/images/route-view.png)
-```
 
-Recommended folder:
-- `docs/images/`
+Recommended folder: `docs/images/`
 ## License
 
 Add your preferred license (for example, MIT) in a `LICENSE` file.
-

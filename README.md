@@ -155,9 +155,9 @@ Add project screenshots in this section.
 Example markdown you can use:
 
 ```md
-![Landing Page](docs/images/landing-page.jpg)
+![landing-page](docs/images/landing-page.png)
 
-![Route View](docs/images/route-view.jpeg)
+![route-view](docs/images/route-view.png)
 ```
 
 Recommended folder:

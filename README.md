@@ -1,121 +1,168 @@
-🗺️ MAPIFY
+﻿# Mapify
 
-Route Finder Web Application using Mapbox API
+Mapify is a Flask web application that combines user authentication with Mapbox-powered route visualization. Users can sign up, log in, enter a start and destination location, and view a driving route on an interactive map.
 
-Mapify is a web-based route visualization application built using Flask and Mapbox API.
-The application allows users to input two locations and view the route between them on an interactive map.
+## Features
 
-The project includes a basic authentication system backed by MySQL, developed locally using XAMPP, and is deployed on Railway for public access.
+- User registration and login with encrypted passwords (`Flask-Bcrypt`)
+- Session-based authentication and protected routes (`Flask-Login`)
+- Route plotting between two locations using Mapbox APIs
+- Interactive map rendering with `mapbox-gl-js`
+- Persistent user storage with `Flask-SQLAlchemy`
 
-This project was developed as a first web development project, focusing on API integration, backend–frontend connectivity, and database-backed authentication.
+## Tech Stack
 
+- Python
+- Flask
+- Flask-SQLAlchemy
+- Flask-Login
+- Flask-WTF / WTForms
+- Flask-Bcrypt
+- MySQL (via `PyMySQL`) or any SQL database configured through `DATABASE_URL`
+- Mapbox GL JS + Geocoding + Directions APIs
+- Gunicorn (production server)
 
----
+## Project Structure
 
-🚀 Features
+```text
+Mapify/
+|-- main.py
+|-- requirements.txt
+|-- nixpacks.toml
+|-- static/
+|   |-- css/
+|   `-- images/
+`-- templates/
+    |-- index.html
+    |-- login.html
+    |-- signup.html
+    `-- home.html
+```
 
-User authentication (login & registration)
+## Prerequisites
 
-MySQL-backed authentication system
+- Python 3.9+
+- A Mapbox account and access token
+- A database instance (for users table)
 
-Input source and destination locations
+## Environment Variables
 
-Display route between two locations
+Create a `.env` file (or set variables in your deployment platform):
 
-Interactive map visualization
+```env
+DATABASE_URL=mysql+pymysql://username:password@host:3306/database_name
+SECRET_KEY=your_strong_secret_key
+MAPBOX_ACCESS_TOKEN=your_mapbox_access_token
+PORT=5000
+```
 
-Real-time route rendering using Mapbox API
+Notes:
+- `DATABASE_URL` is required.
+- `SECRET_KEY` should be set explicitly in production.
+- `MAPBOX_ACCESS_TOKEN` is used by the app for map functionality.
 
+## Installation
 
+```bash
+# 1) Clone repository
+git clone <your-repo-url>
+cd Mapify
 
----
+# 2) Create virtual environment
+python -m venv .venv
 
-🧰 Tech Stack
+# 3) Activate virtual environment
+# Windows (PowerShell)
+.\.venv\Scripts\Activate.ps1
+# macOS/Linux
+source .venv/bin/activate
 
-Layer	Technology
+# 4) Install dependencies
+pip install -r requirements.txt
+```
 
-Backend	Python, Flask
-Frontend	HTML, CSS
-API	Mapbox API
-Database	MySQL
-Authentication	Flask + MySQL
-Local Development	XAMPP
-Hosting	Railway
-Scripting	Basic JavaScript
-Version Control	Git, GitHub
+## Database Setup
 
+Open a Python shell in the project root and run:
 
+```python
+from main import app, db
+with app.app_context():
+    db.create_all()
+```
 
----
+This creates the `user` table defined in `main.py`.
 
-👨‍💻 Team Contributions
+## Run Locally
 
-Backend, Authentication & Database Integration: Rohit Jain
+```bash
+python main.py
+```
 
-Flask routing
+App runs on:
+- `http://127.0.0.1:5000`
+- or `http://0.0.0.0:5000`
 
-Authentication system using MySQL
+## Production Run
 
-Database connectivity via XAMPP (development)
+Gunicorn command (already configured in `nixpacks.toml`):
 
-Frontend–backend integration
+```bash
+gunicorn main:app
+```
 
-Request handling and session flow
+## Application Flow
 
+1. `GET /` shows landing page.
+2. `GET/POST /signup` creates a new user account.
+3. `GET/POST /login` authenticates user.
+4. `GET/POST /home` (login required) accepts start/end locations and renders route.
+5. `GET /logout` logs out the user.
 
-API Integration: Team Member
+## Security Notes
 
-Mapbox API implementation
+- Passwords are hashed before storing.
+- Keep `SECRET_KEY` private.
+- Do not hardcode API tokens in templates or JavaScript for production.
+- Restrict and rotate your Mapbox token periodically.
 
+## Deployment
 
-UI Styling: Team Member
+This project includes `nixpacks.toml`:
 
-CSS design and layout
+```toml
+[build]
+builder = "nixpacks"
 
+[start]
+cmd = "gunicorn main:app"
+```
 
+It can be deployed to platforms that support Nixpacks/Gunicorn (for example: Railway).
 
+## Future Improvements
 
----
+- Flash messages for login/signup errors
+- Better form validation feedback in UI
+- CSRF and security hardening review
+- Route profile options (driving/walking/cycling)
+- Unit and integration tests
 
-🔍 Current Limitations
+## Screenshots
 
-No CRUD operations
+Add project screenshots in this section.
 
-No advanced role-based authorization
+Example markdown you can use:
 
-Limited database usage (authentication only)
+```md
+![Landing Page](docs/images/landing-page.jpg)
 
-Minimal frontend interactivity beyond routing
+![Route View](docs/images/route-view.jpeg)
+```
 
+Recommended folder:
+- `docs/images/`
+## License
 
+Add your preferred license (for example, MIT) in a `LICENSE` file.
 
----
-
-📚 Learning Outcomes
-
-Flask application structure
-
-Authentication using MySQL
-
-API integration with Mapbox
-
-Frontend–backend communication
-
-Local development using XAMPP
-
-Cloud deployment using Railway
-
-Team-based development workflow
-
-
-
----
-
-👤 Author
-
-Rohit Jain
-Backend & Web Developer
-
-linked in- https://www.linkedin.com/in/546-rohit-jain
-
-🚅railway deployment link- https://project-mapify-production.up.railway.app/

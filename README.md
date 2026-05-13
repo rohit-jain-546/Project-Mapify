@@ -1,4 +1,4 @@
-﻿# Mapify
+﻿# Project -Mapify
 
 Mapify is a Flask web application that combines user authentication with Mapbox-powered route visualization. Users can sign up, log in, enter a start and destination location, and view a driving route on an interactive map.
 

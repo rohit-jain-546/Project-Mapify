@@ -159,5 +159,5 @@ Recommended folder: `docs/images/`
 
 ## Author
 
-Rohit Jain  
+Rohit Jain  (B.Tech CSE)
 LinkedIn: https://www.linkedin.com/in/546-rohit-jain
